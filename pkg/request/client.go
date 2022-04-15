@@ -31,8 +31,8 @@ type Resolver struct {
 }
 
 type Client struct {
-	hostname string
-	cc       *grpc.ClientConn
+	Hostname   string
+	ClientConn *grpc.ClientConn
 }
 
 func NewClient(opt *Option) *Client {
@@ -72,8 +72,8 @@ func NewClient(opt *Option) *Client {
 		zaplogger.Sugar().Fatal(err)
 	}
 	c := &Client{
-		hostname: env.GetHostNameMustSpecified(),
-		cc:       roundrobinConn,
+		Hostname:   env.GetHostNameMustSpecified(),
+		ClientConn: roundrobinConn,
 	}
 	return c
 }
